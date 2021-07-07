@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
-
+require 'pry'
+require 'rake'
 class Student
 
   # Remember, you can access your database connection anywhere in this class
@@ -40,12 +41,12 @@ class Student
     DB[:conn].execute(sql, self.name, self.grade)
     
   end
-
+  
   def self.create(name:, grade:)
     student = Student.new(name, grade)
     student.save
   end
-
+ 
   def self.all
     sql = "SELECT * FROM students" 
     DB[:conn].execute(sql)
